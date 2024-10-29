@@ -24,10 +24,26 @@ form {
     border-radius: 25px;
     padding: 60px 20px;
 }
-a {
-    text-decoration: none;
-    color: blue;
+
+form div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
+
+form label {
+    width: 150px;
+    font-weight: bold;
+}
+
+
+form input, form select, form textarea {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 .message-success {
     border: 2px solid green;
     background-color: #d4edda;  
