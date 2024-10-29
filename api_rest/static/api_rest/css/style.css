@@ -1,10 +1,10 @@
 /* style.css */
 body {
-    background-color: aqua;
+    background-color: white;
 }
 
 h1 {
-    color: aqua;
+    color: black;
 }
 
 button {
@@ -15,6 +15,10 @@ button {
     border-radius: 5px;
 }
 
+form {
+    text-align: center;
+    background-color: aquamarine;
+}
 a {
     text-decoration: none;
     color: blue;
