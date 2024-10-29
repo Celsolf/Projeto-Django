@@ -1,4 +1,3 @@
-<!-- inserir_pessoa.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -10,11 +9,78 @@
 </head>
 
 <body>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="message-success">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
     <h1>Inserir Nova Pessoa</h1>
     <form method="post">
-        {{ form.as_p }}
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.candidato_nome.id_for_label }}">{{ "Nome"}}</label>
+            {{ form.candidato_nome }}
+        </div>
+        
+        <div>
+            <label for="{{ form.candidato_nascimento.id_for_label }}">{{ "Nascimento"}}</label>
+            {{ form.candidato_nascimento }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_cpf.id_for_label }}">{{ "Cpf"}}</label>
+            {{ form.candidato_cpf }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_email.id_for_label }}">{{ "Email"}}</label>
+            {{ form.candidato_email }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_telefone.id_for_label }}">{{ "Telefone"}}</label>
+            {{ form.candidato_telefone }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_endereco.id_for_label }}">{{ "endereco"}}</label>
+            {{ form.candidato_endereco }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_cargo.id_for_label }}">{{ "Cargo" }}</label>
+            {{ form.candidato_cargo }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_empresa.id_for_label }}">{{ "Empresa"}}</label>
+            {{ form.candidato_empresa }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_periodo.id_for_label }}">{{ "Periodo"}}</label>
+            {{ form.candidato_periodo }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_descricao.id_for_label }}">{{ "Descricao"}}</label>
+            {{ form.candidato_descricao }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_instituicao.id_for_label }}">{{ "Instituição"}}</label>
+            {{ form.candidato_instituicao }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_curso.id_for_label }}">{{"Curso"}}</label>
+            {{ form.candidato_curso }}
+        </div>
+
         <button type="submit">Salvar</button>
     </form>
-    <a href="{% url 'get_all_candidatos' %}">Voltar para lista</a>
 </body>
 </html>

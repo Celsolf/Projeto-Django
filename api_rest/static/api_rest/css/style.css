@@ -1,14 +1,15 @@
 /* style.css */
 body {
-    background-color: white;
+    background-color: rgba(51, 46, 46, 0.837);
+    text-align: center;
 }
 
 h1 {
-    color: black;
+    color: white
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: black;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -17,9 +18,22 @@ button {
 
 form {
     text-align: center;
-    background-color: aquamarine;
+    color:white;
+    background-color: rgb(22, 57, 211);
+    border: 12px solid black;
+    border-radius: 25px;
+    padding: 60px 20px;
 }
 a {
     text-decoration: none;
     color: blue;
+}
+.message-success {
+    border: 2px solid green;
+    background-color: #d4edda;  
+    color: #155724; 
+    padding: 10px; 
+    border-radius: 5px;  
+    margin: 10px 0; 
+    font-weight: bold; 
 }

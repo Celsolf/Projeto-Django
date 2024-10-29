@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
+from django.contrib import messages
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -42,7 +43,8 @@ def inserir_candidato(request):
         form = CandidatoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('get_candidatos')  # Redireciona após o cadastro
+            messages.success(request, "candidato adicionado")
+            return redirect('inserir_candidato')
     else:
         form = CandidatoForm()
     return render(request, 'inserir_candidato.html', {'form': form})
