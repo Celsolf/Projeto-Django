@@ -1,0 +1,21 @@
+/* style.css */
+body {
+    background-color: aqua;
+}
+
+h1 {
+    color: aqua;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}

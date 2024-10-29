@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 
 from rest_framework.decorators import api_view
@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Candidato
+from .forms import CandidatoForm
 from .serializers import CandidatoSerializer
 
 import json
@@ -35,6 +36,25 @@ def get_by_cpf(request,cpf):
         serializer=CandidatoSerializer(candidato)
         return Response(serializer.data)
     
+
+def inserir_candidato(request):
+    if request.method == "POST":
+        form = CandidatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('get_candidatos')  # Redireciona após o cadastro
+    else:
+        form = CandidatoForm()
+    return render(request, 'inserir_candidato.html', {'form': form})
+
+# views.py
+def excluir_candidato(request, id):
+    candidato =Candidato.objects.get(id=id)
+    if request.method == "POST":
+        candidato.delete()
+        return redirect('get_candidatos')
+    return render(request, 'excluir_candidato.html', {'candidato': candidato})
+
 
 # CRUD
 @api_view(['GET','POST','PUT','DELETE'])

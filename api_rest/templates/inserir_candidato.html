@@ -1,0 +1,20 @@
+<!-- inserir_pessoa.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'api_rest/css/style.css' %}">
+    <title>Inserir Pessoa</title>
+</head>
+
+<body>
+    <h1>Inserir Nova Pessoa</h1>
+    <form method="post">
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'get_all_candidatos' %}">Voltar para lista</a>
+</body>
+</html>
