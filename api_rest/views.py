@@ -29,7 +29,7 @@ def get_candidatos(request):
 def get_by_cpf(request,cpf):
 
     try:
-        candidato = Candidato.objects.get(pk = cpf)
+        candidato = Candidato.objects.get(candidato_cpf = cpf)
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
@@ -49,7 +49,7 @@ def inserir_candidato(request):
         form = CandidatoForm()
     return render(request, 'inserir_candidato.html', {'form': form})
 
-# views.py
+
 def excluir_candidato(request, id):
     candidato =Candidato.objects.get(id=id)
     if request.method == "POST":
@@ -59,44 +59,8 @@ def excluir_candidato(request, id):
 
 
 # CRUD
-@api_view(['GET','POST','PUT','DELETE'])
+@api_view(['PUT','DELETE'])
 def candidato_manager(request):
-
-# ACESSOS
-
-    if request.method == 'GET':
-
-        try:
-            if request.GET['candidato']:                         # Check if there is a get parameter called 'user' (/?user=xxxx&...)
-
-                candidato_cpf = request.GET['candidato']         # Find get parameter
-
-                try:
-                    candidato = Candidato.objects.get(pk=candidato_cpf)   # Get the object in database
-                except:
-                    return Response(status=status.HTTP_404_NOT_FOUND)
-
-                serializer = CandidatoSerializer(candidato)           # Serialize the object data into json
-                return Response(serializer.data)                        # Return the serialized data
-
-            else:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
-            
-        except:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
-#criação
-    if request.method =="POST":
-
-        new_candidato= request.data
-        serializer = CandidatoSerializer(data = new_candidato)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-        
-        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 #edição
 
@@ -104,7 +68,7 @@ def candidato_manager(request):
 
         cpf= request.data['candidato_cpf']
         try:
-            update_candidato = Candidato.objects.get(pk=cpf)
+            update_candidato = Candidato.objects.get(candidato_cpf=cpf)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = CandidatoSerializer(update_candidato,data =request.data)
@@ -115,3 +79,14 @@ def candidato_manager(request):
         
         return Response(status=status.HTTP_400_BAD_REQUEST)
     
+    #deletar
+
+    
+    if request.method =="DELETE":
+
+        try:
+            candidato_to_delete = Candidato.objects.get(candidato_cpf=request.data["candidato_cpf"])
+            candidato_to_delete.delete()
+            return Response(status=status.HTTP_202_ACCEPTED)
+        except Candidato.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
