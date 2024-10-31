@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -12,7 +12,8 @@ from .serializers import CandidatoSerializer
 
 import json
 
-#testes
+
+@login_required
 @api_view(['GET'])
 def get_candidatos(request):
 
@@ -25,6 +26,7 @@ def get_candidatos(request):
     
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
+@login_required
 @api_view(['GET'])
 def get_by_cpf(request,cpf):
 
@@ -38,6 +40,7 @@ def get_by_cpf(request,cpf):
         return Response(serializer.data)
     
 
+@login_required
 def inserir_candidato(request):
     if request.method == "POST":
         form = CandidatoForm(request.POST)
@@ -58,7 +61,7 @@ def excluir_candidato(request, id):
     return render(request, 'excluir_candidato.html', {'candidato': candidato})
 
 
-# CRUD
+
 @api_view(['PUT','DELETE'])
 def candidato_manager(request):
 
@@ -81,7 +84,6 @@ def candidato_manager(request):
     
     #deletar
 
-    
     if request.method =="DELETE":
 
         try:
