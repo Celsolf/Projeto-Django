@@ -21,63 +21,65 @@
     <form method="post">
         {% csrf_token %}
         <div>
-            <label for="{{ form.candidato_nome.id_for_label }}">{{ "Nome"}}</label>
+            <label for="{{ form.candidato_nome.id_for_label }}">Nome:</label>
             {{ form.candidato_nome }}
+        </div>
+    
+        <div>
+            <label for=="{{ form.candidato_nascimento.id_for_label }}">Data de Nascimento:</label>
+            <input type="date" id="candidato_nascimento" name="candidato_nascimento">
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_cpf.id_for_label }}">CPF:</label>
+            <input type="text" id="candidato_cpf" name="candidato_cpf" pattern="\d{11}" title="O CPF deve conter exatamente 11 dígitos." required>
         </div>
         
         <div>
-            <label for="{{ form.candidato_nascimento.id_for_label }}">{{ "Nascimento"}}</label>
-            {{ form.candidato_nascimento }}
-        </div>
-
-        <div>
-            <label for="{{ form.candidato_cpf.id_for_label }}">{{ "Cpf"}}</label>
-            {{ form.candidato_cpf }}
-        </div>
-
-        <div>
-            <label for="{{ form.candidato_email.id_for_label }}">{{ "Email"}}</label>
+            <label for="{{ form.candidato_email.id_for_label }}">Email:</label>
             {{ form.candidato_email }}
         </div>
-
+        
         <div>
-            <label for="{{ form.candidato_telefone.id_for_label }}">{{ "Telefone"}}</label>
-            {{ form.candidato_telefone }}
+            <label for="{{ form.candidato_telefone.id_for_label }}">Telefone:</label>
+            <input type="text" id="candidato_telefone" name="candidato_telefone" pattern="\d{10,11}" title="O telefone deve conter 10 ou 11 dígitos." required>
         </div>
-
         <div>
-            <label for="{{ form.candidato_endereco.id_for_label }}">{{ "endereco"}}</label>
+            <label for="{{ form.candidato_endereco.id_for_label }}">Endereco:</label>
             {{ form.candidato_endereco }}
         </div>
 
         <div>
-            <label for="{{ form.candidato_cargo.id_for_label }}">{{ "Cargo" }}</label>
+            <label for="{{ form.candidato_cargo.id_for_label }}">Cargo:</label>
             {{ form.candidato_cargo }}
         </div>
 
         <div>
-            <label for="{{ form.candidato_empresa.id_for_label }}">{{ "Empresa"}}</label>
+            <label for="{{ form.candidato_empresa.id_for_label }}">Empresa:</label>
             {{ form.candidato_empresa }}
         </div>
 
         <div>
-            <label for="{{ form.candidato_periodo.id_for_label }}">{{ "Periodo"}}</label>
+            <label for="{{ form.candidato_periodo.id_for_label }}">Periodo:</label>
             {{ form.candidato_periodo }}
         </div>
 
         <div>
-            <label for="{{ form.candidato_descricao.id_for_label }}">{{ "Descricao"}}</label>
-            {{ form.candidato_descricao }}
-        </div>
-
-        <div>
-            <label for="{{ form.candidato_instituicao.id_for_label }}">{{ "Instituição"}}</label>
+            <label for="{{ form.candidato_instituicao.id_for_label }}">Instituição:</label>
             {{ form.candidato_instituicao }}
         </div>
 
         <div>
-            <label for="{{ form.candidato_curso.id_for_label }}">{{"Curso"}}</label>
+            <label for="{{ form.candidato_curso.id_for_label }}">Curso:</label>
             {{ form.candidato_curso }}
+        </div>
+
+        <div>
+            <label for="{{ form.candidato_descricao.id_for_label }}">Descricao:</label>
+            <textarea id="{{ form.candidato_descricao.id_for_label }}" name="candidato_descricao" rows="10" cols="50">
+                {{ form.candidato_descricao.value }}
+            </textarea>
+
         </div>
 
         <button type="submit">Salvar</button>
