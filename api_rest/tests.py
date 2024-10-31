@@ -9,7 +9,15 @@ class CandidatoModelTest(TestCase):
             candidato_nome="Celso Lopes Filho",
             candidato_nascimento="2004-01-29",
             candidato_cpf="08876384901",
-            candidato_email="celsinholf@gmail.com"
+            candidato_email="celsinholf@gmail.com",
+            candidato_telefone="43996386381", 
+            candidato_endereco="", 
+            candidato_cargo="estagiario", 
+            candidato_empresa="", 
+            candidato_periodo="manhã",
+            candidato_descricao="Um  jovem sem experiencia na carreira profissional que procura seu primeiro trabalho para começar a construir sua carreira profissional",
+            candidato_instituicao="Universidade Tecnológica Federal do Paraná ", 
+            candidato_curso="Anaslise e desenvolvimento de Sistemas"
         )
 
     def test_nome_candidato(self):
