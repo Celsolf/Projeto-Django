@@ -18,6 +18,11 @@
 {% endif %}
 
     <h1>Inserir Novo Candidato</h1>
+    {% if user.is_authenticated %}
+    <p>Olá, {{ user.username }}! <a href="{% url 'login' %}">Logout</a></p>
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
     <form method="post">
         {% csrf_token %}
         <div>

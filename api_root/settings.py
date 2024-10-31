@@ -130,5 +130,6 @@ CORS_ALLOW_ORIGINS = [
     'http://localhost:8080'
 ]
 
-LOGIN_REDIRECT_URL = 'inserir/'
-LOGOUT_REDIRECT_URL = 'accounts/login/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'inserir_candidato'
+LOGOUT_REDIRECT_URL = 'login'
