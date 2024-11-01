@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
@@ -45,9 +44,12 @@ def inserir_candidato(request):
     if request.method == "POST":
         form = CandidatoForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "candidato adicionado")
-            return redirect('inserir_candidato')
+               form.save()
+               messages.success(request, "candidato adicionado")
+               return redirect('inserir_candidato')
+        else:
+            messages.error(request, "Erro no formulário. Por favor, verifique os campos.Os campos de cpf,email ou telefone já estão registrados.")
+        
     else:
         form = CandidatoForm()
     return render(request, 'inserir_candidato.html', {'form': form})
